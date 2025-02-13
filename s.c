@@ -15,9 +15,6 @@ typedef unsigned char      uint8_t;
 typedef unsigned short     uint16_t;
 
 #ifdef _TARGET_DOS
-	#include <dos.h>
-	union REGS inregs, outregs;
-	struct SREGS segregs;
 	typedef struct _DBCS_TABLE
 	{
 	   uint8_t start;
