@@ -33,7 +33,9 @@ void screen_jump(uint16_t index)
 	char chr;
 	int i, y;
 	int isdbcs;
+#ifdef _TARGET_DOS
 	printf("\x1b[2J");
+#endif
 	printf("\r\n");
 	index &= 0xffe0u;
 	for (y=0;y<18;y++)
@@ -76,9 +78,13 @@ void screen_jump(uint16_t index)
 		}
 		printf("\r\n");
 	}
+#ifdef _TARGET_DOS
 	printf("\x1b[3B");
 	printf(" \x1b[1mW\x1b[0m Scroll Up    \x1b[1mA\x1b[0m Page Up    \x1b[1mS\x1b[0m Scroll Down    \x1b[1mD\x1b[0m Page Down    \x1b[1mJ\x1b[0m Jump    \x1b[1mESC\x1b[0m Exit\r\n");
 	printf("\x1b[2A");
+#else
+	printf("[W] Scroll Up  [A] Page Up  [S] Scroll Down  [D] Page Down  [J] Jump  [ESC] Exit\r\n");
+#endif
 	return;
 }
 
